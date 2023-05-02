@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "131456518085",
+    "project_id": "twitter-clone-cdf50",
+    "storage_bucket": "twitter-clone-cdf50.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131456518085:android:0f271a853c377c0a916dac",
+        "android_client_info": {
+          "package_name": "com.example.clean_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "131456518085-u0h784kln3va4v6sst552mepvv29nf0i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcRtWTRyzti2k_eYhZVzVca6rb5jFfMO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "131456518085-bh5h7vr5321gdcd7qvltlh7foct7i7e3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "131456518085-8ms4lrlagkj7518f9788gh7p5lcs7c2d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.thealphamerc.flutterTwitterClone"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131456518085:android:d01b8646aaa6f9f5916dac",
+        "android_client_info": {
+          "package_name": "com.thealphamerc.flutter_twitter_clone_dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "131456518085-u0h784kln3va4v6sst552mepvv29nf0i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcRtWTRyzti2k_eYhZVzVca6rb5jFfMO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "131456518085-bh5h7vr5321gdcd7qvltlh7foct7i7e3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "131456518085-8ms4lrlagkj7518f9788gh7p5lcs7c2d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.thealphamerc.flutterTwitterClone"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

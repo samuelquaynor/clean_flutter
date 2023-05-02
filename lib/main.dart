@@ -13,7 +13,7 @@ Future<void> main() async {
     runApp(MaterialApp(
         // routes: Routes.routes,
         // home: authState ? const HomePage() : WelcomePage(),
-        title: 'Heny',
+        title: 'Twitter',
         // darkTheme: darkTheme,
         // theme: lightTheme
         ));

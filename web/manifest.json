@@ -1,6 +1,6 @@
 {
-    "name": "clean_flutter",
-    "short_name": "clean_flutter",
+    "name": "clean_twitter",
+    "short_name": "clean_twitter",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

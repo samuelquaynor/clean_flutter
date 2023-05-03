@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:hive/hive.dart';
 
 /// Getter
 final sl = GetIt.instance;
@@ -20,4 +21,6 @@ void initFeatures() {}
 void initCore() {}
 
 /// External packages
-void initExternal() {}
+void initExternal() {
+  sl..registerLazySingleton<HiveInterface>(() => Hive);
+}

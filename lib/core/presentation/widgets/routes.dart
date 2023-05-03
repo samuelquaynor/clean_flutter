@@ -1,94 +1,172 @@
-// import 'package:flutter/material.dart';
+// ignore_for_file: prefer_const_constructors
 
-// import '../../../src/favourites/presentation/pages/favourites_page.dart';
-// import '../../../src/forget_password/presentation/pages/forget_password.dart';
-// import '../../../src/home/presentation/pages/home_page.dart';
-// import '../../../src/invite_friends/presentation/pages/invite_friends_page.dart';
-// import '../../../src/login/presentation/pages/login_page.dart';
-// import '../../../src/notification/presentation/pages/notification_page.dart';
-// import '../../../src/onboarding/presentation/pages/onboarding_page.dart';
-// import '../../../src/settings/presentation/pages/settings_page.dart';
-// import '../../../src/settings/presentation/widgets/change_password.dart';
-// import '../../../src/settings/presentation/widgets/change_phone.dart';
-// import '../../../src/settings/presentation/widgets/edit_profile.dart';
-// import '../../../src/sign_up/presentation/pages/signup.dart';
-// import '../../../src/wallet/presentation/pages/wallet_page.dart';
-// import '../../../src/webview/presentation/pages/webview.dart';
-// import '../../../src/welcome/presentation/pages/welcome_page.dart';
-// import '../../booking/presentation/pages/bookings_page.dart';
+import 'package:flutter/material.dart';
 
-// /// ++++++++++++++++++++++++++++
-// /// Navigation Urls
-// /// ++++++++++++++++++++++++++++
-// class Routes {
-//   /// Open [HomePage]
-//   static const String home = '/home';
+import '../../../features/welcome/presentation/pages/welcome_page.dart';
 
-//   /// Open [LoginPage]
-//   static const String login = '/login';
+class Routes {
+  static Map<String, Widget Function(BuildContext)> route() {
+    return {
+      'WelcomePage': (BuildContext context) => const WelcomePage(),
+    };
+  }
 
-//   /// Open [SignUpPage]
-//   static const String signUp = '/signUp';
+  static void sendNavigationEventToFirebase(String? path) {
+    if (path != null && path.isNotEmpty) {
+      // analytics.setCurrentScreen(screenName: path);
+    }
+  }
 
-//   /// Open [NotificationPage]
-//   static const String notification = '/notification';
+  static Route? onGenerateRoute(RouteSettings settings) {
+    final pathElements = settings.name!.split('/');
+    if (pathElements[0] != '' || pathElements.length == 1) {
+      return null;
+    }
+    return null;
+    // switch (pathElements[1]) {
+    //   case "ComposeTweetPage":
+    //     bool isRetweet = false;
+    //     bool isTweet = false;
+    //     if (pathElements.length == 3 && pathElements[2].contains('retweet')) {
+    //       isRetweet = true;
+    //     } else if (pathElements.length == 3 &&
+    //         pathElements[2].contains('tweet')) {
+    //       isTweet = true;
+    //     }
+    //     return CustomRoute<bool>(
+    //         builder: (BuildContext context) =>
+    //             ChangeNotifierProvider<ComposeTweetState>(
+    //               create: (_) => ComposeTweetState(),
+    //               child:
+    //                   ComposeTweetPage(isRetweet: isRetweet, isTweet: isTweet),
+    //             ));
+    //   case "FeedPostDetail":
+    //     var postId = pathElements[2];
+    //     return SlideLeftRoute<bool>(
+    //         builder: (BuildContext context) => FeedPostDetail(
+    //               postId: postId,
+    //             ),
+    //         settings: const RouteSettings(name: 'FeedPostDetail'));
+    //   case "ProfilePage":
+    //     String profileId;
+    //     if (pathElements.length > 2) {
+    //       profileId = pathElements[2];
+    //       return CustomRoute<bool>(
+    //           builder: (BuildContext context) => ProfilePage(
+    //                 profileId: profileId,
+    //               ));
+    //     }
+    //     return CustomRoute(builder: (BuildContext context) => const HomePage());
 
-//   /// Open [FavouritesPage]
-//   static const String favourites = '/favourites';
+    //   case "CreateFeedPage":
+    //     return CustomRoute<bool>(
+    //         builder: (BuildContext context) =>
+    //             ChangeNotifierProvider<ComposeTweetState>(
+    //               create: (_) => ComposeTweetState(),
+    //               child:
+    //                   const ComposeTweetPage(isRetweet: false, isTweet: true),
+    //             ));
+    //   case "WelcomePage":
+    //     return CustomRoute<bool>(
+    //         builder: (BuildContext context) => const WelcomePage());
+    //   case "SignIn":
+    //     return CustomRoute<bool>(builder: (BuildContext context) => SignIn());
+    //   case "SignUp":
+    //     return CustomRoute<bool>(builder: (BuildContext context) => Signup());
+    //   case "ForgetPasswordPage":
+    //     return CustomRoute<bool>(
+    //         builder: (BuildContext context) => const ForgetPasswordPage());
+    //   case "SearchPage":
+    //     return CustomRoute<bool>(
+    //         builder: (BuildContext context) => SearchPage());
+    //   case "ImageViewPge":
+    //     return CustomRoute<bool>(
+    //         builder: (BuildContext context) => const ImageViewPge());
+    //   case "ChatScreenPage":
+    //     return CustomRoute<bool>(
+    //         builder: (BuildContext context) => const ChatScreenPage());
+    //   case "NewMessagePage":
+    //     return CustomRoute<bool>(
+    //       builder: (BuildContext context) => NewMessagePage(),
+    //     );
+    //   case "SettingsAndPrivacyPage":
+    //     return CustomRoute<bool>(
+    //       builder: (BuildContext context) => const SettingsAndPrivacyPage(),
+    //     );
+    //   case "AccountSettingsPage":
+    //     return CustomRoute<bool>(
+    //       builder: (BuildContext context) => const AccountSettingsPage(),
+    //     );
+    //   case "PrivacyAndSaftyPage":
+    //     return CustomRoute<bool>(
+    //       builder: (BuildContext context) => const PrivacyAndSaftyPage(),
+    //     );
+    //   case "NotificationPage":
+    //     return CustomRoute<bool>(
+    //       builder: (BuildContext context) => const NotificationPage(),
+    //     );
+    //   case "ContentPrefrencePage":
+    //     return CustomRoute<bool>(
+    //       builder: (BuildContext context) => const ContentPrefrencePage(),
+    //     );
+    //   case "DisplayAndSoundPage":
+    //     return CustomRoute<bool>(
+    //       builder: (BuildContext context) => const DisplayAndSoundPage(),
+    //     );
+    //   case "DirectMessagesPage":
+    //     return CustomRoute<bool>(
+    //       builder: (BuildContext context) => const DirectMessagesPage(),
+    //     );
+    //   case "TrendsPage":
+    //     return CustomRoute<bool>(
+    //       builder: (BuildContext context) => const TrendsPage(),
+    //     );
+    //   case "DataUsagePage":
+    //     return CustomRoute<bool>(
+    //       builder: (BuildContext context) => const DataUsagePage(),
+    //     );
+    //   case "AccessibilityPage":
+    //     return CustomRoute<bool>(
+    //       builder: (BuildContext context) => const AccessibilityPage(),
+    //     );
+    //   case "ProxyPage":
+    //     return CustomRoute<bool>(
+    //       builder: (BuildContext context) => const ProxyPage(),
+    //     );
+    //   case "AboutPage":
+    //     return CustomRoute<bool>(
+    //       builder: (BuildContext context) => const AboutPage(),
+    //     );
+    //   case "ConversationInformation":
+    //     return CustomRoute<bool>(
+    //       builder: (BuildContext context) => const ConversationInformation(),
+    //     );
+    //   case "FollowerListPage":
+    //     return CustomRoute<bool>(
+    //       builder: (BuildContext context) => FollowerListPage(),
+    //     );
+    //   case "VerifyEmailPage":
+    //     return CustomRoute<bool>(
+    //       builder: (BuildContext context) => VerifyEmailPage(),
+    //     );
+    //   default:
+    //     return onUnknownRoute(const RouteSettings(name: '/Feature'));
+    // }
+  }
 
-//   /// Open [InviteFriendsPage]
-//   static const String inviteFriends = '/inviteFriends';
-
-//   /// Open bookings list page
-//   static const String bookings = '/bookings';
-
-//   /// Open [WelcomePage]
-//   static const String welcome = '/welcome';
-
-//   /// Open [WalletPage]
-//   static const String wallet = '/wallet';
-
-//   /// Open [SettingsPage]
-//   static const String settings = '/settings';
-
-//   /// Open [EditProfile]
-//   static const String editProfile = '/editProfile';
-
-//   /// Open [ChangePhone]
-//   static const String changePhone = '/changePhone';
-
-//   /// Open [ChangePhone]
-//   static const String onboarding = '/onboarding';
-
-//   /// Open [ChangePassword]
-//   static const String changePassword = '/changePassword';
-
-//   /// Open [ForgetPasswordPage]
-//   static const String forgotPassword = '/forgotPassword';
-  
-//   /// Open [WebViewPage]
-//   static const String webViewPage = '/webViewPage';
-
-//   /// ++++++++++++++++++++++++++++
-//   /// All routes for main.dart
-//   /// ++++++++++++++++++++++++++++
-
-//   static final Map<String, WidgetBuilder> routes = {
-//     Routes.login: (context) => const LoginPage(),
-//     Routes.signUp: (context) => const SignUpPage(),
-//     Routes.home: (context) => const HomePage(),
-//     Routes.notification: (context) => NotificationPage(),
-//     Routes.inviteFriends: (context) => InviteFriendsPage(),
-//     Routes.favourites: (context) => FavouritesPage(),
-//     Routes.bookings: (context) => BookingsPage(),
-//     Routes.welcome: (context) => WelcomePage(),
-//     Routes.wallet: (context) => const WalletPage(),
-//     Routes.settings: (context) => const SettingsPage(),
-//     Routes.editProfile: (context) => const EditProfile(),
-//     Routes.changePassword: (context) => ChangePassword(),
-//     Routes.changePhone: (context) => ChangePhone(),
-//     Routes.forgotPassword: (context) => const ForgetPasswordPage(),
-//     Routes.webViewPage: (context) => const WebViewPage(),
-//     Routes.onboarding: (context) => const OnboardingPage()
-//   };
-// }
+  static Route onUnknownRoute(RouteSettings settings) {
+    return MaterialPageRoute(
+      builder: (context) => Scaffold(
+        appBar: AppBar(
+          // title: customTitleText(
+          //   settings.name!.split('/')[1],
+          // ),
+          centerTitle: true,
+        ),
+        body: Center(
+          child: Text('${settings.name!.split('/')[1]} Comming soon..'),
+        ),
+      ),
+    );
+  }
+}

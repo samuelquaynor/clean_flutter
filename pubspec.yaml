@@ -53,6 +53,7 @@ dependencies:
   json_annotation: ^4.8.0
   google_fonts: ^4.0.4
   firebase_database: ^10.1.1
+  scroll_date_picker: ^3.7.0
 
 dev_dependencies:
   flutter_test:

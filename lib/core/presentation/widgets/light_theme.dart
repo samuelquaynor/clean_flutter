@@ -15,8 +15,11 @@ ThemeData lightTheme = ThemeData(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
     primaryColor: TwitterColor.cerulean,
     colorScheme: ColorScheme.fromSwatch(accentColor: TwitterColor.cerulean),
-    appBarTheme:
-        const AppBarTheme(backgroundColor: Colors.white24, elevation: 0),
+    appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.white24,
+        centerTitle: true,
+        elevation: 0,
+        iconTheme: IconThemeData(color: Colors.black87)),
     textTheme: GoogleFonts.mulishTextTheme(TextTheme(
       // displayLarge: GoogleFonts.mulish(textStyle: textTheme.displayLarge),
       // displayMedium: GoogleFonts.mulish(textStyle: textTheme.displayMedium),
@@ -24,14 +27,18 @@ ThemeData lightTheme = ThemeData(
       headlineLarge: GoogleFonts.mulish(
           textStyle: const TextStyle(
               fontSize: 32, fontWeight: FontWeight.w800, color: Colors.black)),
-      // headlineMedium: GoogleFonts.mulish(textStyle: textTheme.headlineMedium),
+      headlineMedium: GoogleFonts.mulish(
+          textStyle: const TextStyle(
+              fontSize: 26, fontWeight: FontWeight.w800, color: Colors.black)),
       // headlineSmall: GoogleFonts.mulish(textStyle: textTheme.headlineSmall),
       // titleLarge: GoogleFonts.mulish(textStyle: textTheme.titleLarge),
       // titleMedium: GoogleFonts.mulish(textStyle: textTheme.titleMedium),
       // titleSmall: GoogleFonts.mulish(textStyle: textTheme.titleSmall),
       bodyLarge: GoogleFonts.mulish(textStyle: const TextStyle(fontSize: 18)),
       bodyMedium: GoogleFonts.mulish(textStyle: const TextStyle(fontSize: 16)),
-      bodySmall: GoogleFonts.mulish(textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
+      bodySmall: GoogleFonts.mulish(
+          textStyle:
+              const TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
       labelLarge: GoogleFonts.mulish(
           textStyle: const TextStyle(
               fontSize: 18,

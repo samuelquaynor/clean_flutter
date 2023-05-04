@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import '../../../../core/presentation/widgets/theme/theme.dart';
+import '../../../signup/presentation/pages/sign_up.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -21,6 +22,7 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+            resizeToAvoidBottomInset: true,
             body: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
@@ -86,14 +88,10 @@ class _WelcomePageState extends State<WelcomePage> {
                           child: ElevatedButton(
                               child: const Text('Create account'),
                               onPressed: () {
-                                // final state = Provider.of<AuthState>(context, listen: false);
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //     builder: (context) =>
-                                //         Signup(loginCallback: state.getCurrentUser),
-                                //   ),
-                                // );
+                                Navigator.push<void>(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const SignUp()));
                               })),
                       Text.rich(TextSpan(children: [
                         TextSpan(

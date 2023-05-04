@@ -1,15 +1,15 @@
 import 'package:hive/hive.dart';
 
 import '../../../error/exception.dart';
-import '../../domain/entities/user.dart';
+import '../../domain/entities/user_entity.dart';
 
 /// Access user data stored locally
 abstract class UserLocalDatabase {
   /// returns a user model
-  Future<User> retrieve();
+  Future<UserEntity> retrieve();
 
   /// Saves a user model
-  Future<void> save(User user);
+  Future<void> save(UserEntity user);
 
   /// Retrieves the user authentication state
   Future<bool> authenticationStatus();
@@ -27,10 +27,10 @@ class UserLocalDatabaseImpl implements UserLocalDatabase {
   static const String _boxName = 'user';
 
   /// Returns a hive instance of a user model
-  Future<User> _retrieveBox() async {
+  Future<UserEntity> _retrieveBox() async {
     try {
-      final box = await hiveInterface.openBox<User>(_boxName);
-      return box.get(0) ?? User.initial();
+      final box = await hiveInterface.openBox<UserEntity>(_boxName);
+      return box.get(0) ?? UserEntity.initial();
     } catch (error) {
       await hiveInterface.deleteBoxFromDisk(_boxName);
       return _retrieveBox();
@@ -41,14 +41,14 @@ class UserLocalDatabaseImpl implements UserLocalDatabase {
   Future<bool> authenticationStatus() async {
     try {
       final user = await _retrieveBox();
-      return user.key?.isNotEmpty ?? false;
+      return user.userId.isNotEmpty;
     } catch (error) {
       return false;
     }
   }
 
   @override
-  Future<User> retrieve() async {
+  Future<UserEntity> retrieve() async {
     try {
       final user = await _retrieveBox();
       return user;
@@ -58,9 +58,9 @@ class UserLocalDatabaseImpl implements UserLocalDatabase {
   }
 
   @override
-  Future<void> save(User user) async {
+  Future<void> save(UserEntity user) async {
     try {
-      final box = await hiveInterface.openBox<User>(_boxName);
+      final box = await hiveInterface.openBox<UserEntity>(_boxName);
       await box.put(0, user);
     } catch (error) {
       throw DeviceException('Device Error!\nInsufficient storage space');

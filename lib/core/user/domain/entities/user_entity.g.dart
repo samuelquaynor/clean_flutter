@@ -1,29 +1,28 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user.dart';
+part of 'user_entity.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class UserAdapter extends TypeAdapter<User> {
+class UserEntityAdapter extends TypeAdapter<UserEntity> {
   @override
   final int typeId = 0;
 
   @override
-  User read(BinaryReader reader) {
+  UserEntity read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return User(
+    return UserEntity(
       createdAt: fields[12] as String,
       isVerified: fields[13] as bool,
       email: fields[1] as String,
       userId: fields[2] as String,
       userName: fields[4] as String,
-      key: fields[0] as String?,
-      displayName: fields[3] as String?,
+      name: fields[3] as String,
       webSite: fields[5] as String?,
       profilePic: fields[6] as String?,
       bannerImage: fields[7] as String?,
@@ -40,9 +39,9 @@ class UserAdapter extends TypeAdapter<User> {
   }
 
   @override
-  void write(BinaryWriter writer, User obj) {
+  void write(BinaryWriter writer, UserEntity obj) {
     writer
-      ..writeByte(19)
+      ..writeByte(18)
       ..writeByte(12)
       ..write(obj.createdAt)
       ..writeByte(13)
@@ -53,10 +52,8 @@ class UserAdapter extends TypeAdapter<User> {
       ..write(obj.userId)
       ..writeByte(4)
       ..write(obj.userName)
-      ..writeByte(0)
-      ..write(obj.key)
       ..writeByte(3)
-      ..write(obj.displayName)
+      ..write(obj.name)
       ..writeByte(5)
       ..write(obj.webSite)
       ..writeByte(6)
@@ -89,7 +86,7 @@ class UserAdapter extends TypeAdapter<User> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is UserAdapter &&
+      other is UserEntityAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
@@ -98,14 +95,14 @@ class UserAdapter extends TypeAdapter<User> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
+_$_UserEntity _$$_UserEntityFromJson(Map<String, dynamic> json) =>
+    _$_UserEntity(
       createdAt: json['createdAt'] as String,
       isVerified: json['isVerified'] as bool,
       email: json['email'] as String,
       userId: json['userId'] as String,
       userName: json['userName'] as String,
-      key: json['key'] as String?,
-      displayName: json['displayName'] as String?,
+      name: json['name'] as String,
       webSite: json['webSite'] as String?,
       profilePic: json['profilePic'] as String?,
       bannerImage: json['bannerImage'] as String?,
@@ -124,14 +121,14 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
           .toList(),
     );
 
-Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
+Map<String, dynamic> _$$_UserEntityToJson(_$_UserEntity instance) =>
+    <String, dynamic>{
       'createdAt': instance.createdAt,
       'isVerified': instance.isVerified,
       'email': instance.email,
       'userId': instance.userId,
       'userName': instance.userName,
-      'key': instance.key,
-      'displayName': instance.displayName,
+      'name': instance.name,
       'webSite': instance.webSite,
       'profilePic': instance.profilePic,
       'bannerImage': instance.bannerImage,

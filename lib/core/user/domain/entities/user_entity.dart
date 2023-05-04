@@ -3,22 +3,21 @@ import 'package:hive/hive.dart';
 
 import '../../../data/hive_adapters.dart';
 
-part 'user.freezed.dart';
-part 'user.g.dart';
+part 'user_entity.freezed.dart';
+part 'user_entity.g.dart';
 
 @HiveType(typeId: HiveAdapters.user)
 @freezed
-class User with _$User {
+class UserEntity with _$UserEntity {
   @JsonSerializable(explicitToJson: true)
-  const factory User({
+  const factory UserEntity({
     // Hive fields go here
     @HiveField(12) required String createdAt,
     @HiveField(13) required bool isVerified,
     @HiveField(1) required String email,
     @HiveField(2) required String userId,
     @HiveField(4) required String userName,
-    @HiveField(0) String? key,
-    @HiveField(3) String? displayName,
+    @HiveField(3)required String name,
     @HiveField(5) String? webSite,
     @HiveField(6) String? profilePic,
     @HiveField(7) String? bannerImage,
@@ -31,11 +30,16 @@ class User with _$User {
     @HiveField(16) String? fcmToken,
     @HiveField(17) List<String>? followersList,
     @HiveField(18) List<String>? followingList,
-  }) = _User;
+  }) = _UserEntity;
 
-  factory User.initial() => const User(
-      createdAt: '', email: '', isVerified: false, userId: '', userName: '');
+  factory UserEntity.initial() => const UserEntity(
+      createdAt: '',
+      email: '',
+      isVerified: false,
+      userId: '',
+      userName: '',
+      name: '');
 
-  factory User.fromJson(Map<String, dynamic> json) =>
-      _$UserFromJson(json);
+  factory UserEntity.fromJson(Map<String, dynamic> json) =>
+      _$UserEntityFromJson(json);
 }

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'core/data/hive_adapters.dart';
+import 'core/presentation/widgets/light_theme.dart';
 import 'core/presentation/widgets/routes.dart';
 import 'core/user/data/database/user_local_database.dart';
 import 'features/home/presentation/pages/home_page.dart';
@@ -16,11 +17,11 @@ import 'injection_container.dart' as di;
 Future<void> main() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  di.init();
+  await HiveAdapters.setUp();
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   final authState = await di.sl<UserLocalDatabase>().authenticationStatus();
-  di.init();
-  await HiveAdapters.setUp();
   await runZonedGuarded<Future<void>>(() async {
     runApp(MaterialApp(
       routes: Routes.route(),
@@ -31,7 +32,7 @@ Future<void> main() async {
       onUnknownRoute: Routes.onUnknownRoute,
       initialRoute: 'WelcomePage',
       // darkTheme: darkTheme,
-      // theme: lightTheme
+      theme: lightTheme
     ));
   }, FirebaseCrashlytics.instance.recordError);
 }

@@ -3,15 +3,16 @@ import 'package:intl/intl.dart';
 import 'package:scroll_date_picker/scroll_date_picker.dart';
 
 import '../../../../core/util/validator.dart';
+import '../widgets/customize_experience_page.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _SignUpPageState extends State<SignUpPage> {
   DateTime _selectedDate = DateTime.parse('2023-12-23');
 
   @override
@@ -24,11 +25,16 @@ class _SignUpState extends State<SignUp> {
         resizeToAvoidBottomInset: true,
         appBar: AppBar(
             title: Container(
-                height: 40,
+                height: 30,
                 margin: const EdgeInsets.symmetric(vertical: 10),
                 child: Image.asset('assets/images/icon-480.png'))),
         floatingActionButton: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push<void>(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const CustomizeExperience()));
+            },
             style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(vertical: 5)),
             child: const Text('Next')),

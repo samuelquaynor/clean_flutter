@@ -3,6 +3,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import '../../../../core/presentation/widgets/theme/theme.dart';
 import '../../../signup/presentation/pages/sign_up.dart';
+import 'localization_page.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -30,7 +31,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     children: <Widget>[
                       Container(
                           width: MediaQuery.of(context).size.width - 80,
-                          height: 40,
+                          height: 30,
                           margin: const EdgeInsets.symmetric(vertical: 10),
                           child: Image.asset('assets/images/icon-480.png')),
                       Padding(
@@ -91,7 +92,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                 Navigator.push<void>(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const SignUp()));
+                                        builder: (context) => const LocalizationPage()));
                               })),
                       Text.rich(TextSpan(children: [
                         TextSpan(

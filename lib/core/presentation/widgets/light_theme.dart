@@ -30,7 +30,9 @@ ThemeData lightTheme = ThemeData(
       headlineMedium: GoogleFonts.mulish(
           textStyle: const TextStyle(
               fontSize: 26, fontWeight: FontWeight.w800, color: Colors.black)),
-      // headlineSmall: GoogleFonts.mulish(textStyle: textTheme.headlineSmall),
+      headlineSmall: GoogleFonts.mulish(
+          textStyle: const TextStyle(
+              fontSize: 22, fontWeight: FontWeight.w800, color: Colors.black)),
       // titleLarge: GoogleFonts.mulish(textStyle: textTheme.titleLarge),
       // titleMedium: GoogleFonts.mulish(textStyle: textTheme.titleMedium),
       // titleSmall: GoogleFonts.mulish(textStyle: textTheme.titleSmall),
@@ -41,11 +43,19 @@ ThemeData lightTheme = ThemeData(
               const TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
       labelLarge: GoogleFonts.mulish(
           textStyle: const TextStyle(
-              fontSize: 18,
+              fontSize: 17,
               fontWeight: FontWeight.w700,
               color: Colors.black87)),
-      // labelMedium: GoogleFonts.mulish(textStyle: textTheme.labelMedium),
-      // labelSmall: GoogleFonts.mulish(textStyle: textTheme.labelSmall),
+      labelMedium: GoogleFonts.mulish(
+          textStyle: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+              color: Colors.black87)),
+      labelSmall: GoogleFonts.mulish(
+          textStyle: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+              color: Colors.black87)),
     )),
     cardTheme: const CardTheme(
         elevation: 3,
@@ -61,6 +71,7 @@ ThemeData lightTheme = ThemeData(
                 borderRadius: BorderRadius.circular(30)))),
     outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
+            backgroundColor: Colors.white,
             padding: const EdgeInsets.symmetric(vertical: 12),
             textStyle: const TextStyle(
                 fontSize: 18, fontWeight: FontWeight.w600, color: Colors.black),

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../error/exception.dart';
 import '../../../util/utilities.dart';
@@ -11,8 +12,9 @@ abstract class UserRemoteDatabase {
   Future<User?> login({required String email, required String password});
 
   // /// Authenticate using other social platforms
-  // Future<User> socialLogin(
-  //     {required String provider, required User user, required String fcmToken});
+  Future<User?> googleLogin();
+
+  Future<UserEntity?> createUserFromGoogleSignIn(User user);
 
   // /// Get user info
   // Future<User> retrieve(String token);
@@ -36,10 +38,12 @@ abstract class UserRemoteDatabase {
 /// Implements [UserRemoteDatabase]
 class UserRemoteDatabaseImpl implements UserRemoteDatabase {
   /// Constructor
-  UserRemoteDatabaseImpl({required this.auth, required this.database});
+  UserRemoteDatabaseImpl(
+      {required this.auth, required this.googleSignIn, required this.database});
 
   final FirebaseAuth auth;
   final DatabaseReference database;
+  final GoogleSignIn googleSignIn;
 
   @override
   Future<User?> login({required String email, required String password}) async {
@@ -86,6 +90,53 @@ class UserRemoteDatabaseImpl implements UserRemoteDatabase {
           .child(result.userId)
           .set(result.toJson());
       return result;
+    } catch (error) {
+      throw DeviceException(error.toString());
+    }
+  }
+
+  @override
+  Future<User?> googleLogin() async {
+    try {
+      final googleUser = await googleSignIn.signIn();
+      if (googleUser == null) {
+        throw DeviceException('Google login cancelled by user');
+      }
+      final googleAuth = await googleUser.authentication;
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+      final user = (await auth.signInWithCredential(credential)).user;
+      return user;
+    } catch (error) {
+      throw DeviceException(error.toString());
+    }
+  }
+
+  @override
+  Future<UserEntity> createUserFromGoogleSignIn(User user) {
+    try {
+      final diff = DateTime.now().difference(user.metadata.creationTime!);
+      if (diff < const Duration(seconds: 15)) {
+        final entity = UserEntity(
+          bio: 'Edit profile to update bio',
+          dob: DateTime(1950, DateTime.now().month, DateTime.now().day + 3)
+              .toString(),
+          location: 'Somewhere in universe',
+          profilePic: user.photoURL,
+          name: user.displayName!,
+          email: user.email!,
+          userId: user.uid,
+          contact: user.phoneNumber!,
+          isVerified: user.emailVerified,
+          createdAt: DateTime.now().toUtc().toString(),
+          userName: user.displayName!,
+        );
+        return Future.value(entity);
+      } else {
+        return Future.value(UserEntity.initial());
+      }
     } catch (error) {
       throw DeviceException(error.toString());
     }

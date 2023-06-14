@@ -128,19 +128,20 @@ class UserRepositoryImpl implements UserRepository {
   //   }
   // }
 
-  // @override
-  // Future<Either<Failure, User>> socialLogin(
-  //     {required String provider,
-  //     required User user,
-  //     required String fcmToken}) async {
-  //   try {
-  //     await networkInfo.hasInternet();
-  //     final result = await remoteDatabase.socialLogin(
-  //         provider: provider, user: user, fcmToken: fcmToken);
-  //     await localDatabase.save(result);
-  //     return Right(result);
-  //   } on DeviceException catch (error) {
-  //     return Left(Failure(error.message));
-  //   }
-  // }
+  @override
+  Future<Either<Failure, UserEntity>> googleSignIn() async {
+    try {
+      UserEntity? user;
+      await networkInfo.hasInternet();
+      final result = await remoteDatabase.googleLogin();
+      if (result != null) {
+        user = await remoteDatabase.createUserFromGoogleSignIn(result);
+      }
+      // TODO @samuelquaynor: fix this error
+      user != null ? await localDatabase.save(user) : null;
+      return Right(user!);
+    } on DeviceException catch (error) {
+      return Left(Failure(error.message));
+    }
+  }
 }

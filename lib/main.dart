@@ -16,7 +16,7 @@ import 'injection_container.dart' as di;
 
 Future<void> main() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform) ;
   di.init();
   await HiveAdapters.setUp();
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;

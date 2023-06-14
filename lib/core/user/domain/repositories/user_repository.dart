@@ -18,8 +18,7 @@ abstract class UserRepository {
   // Future<Either<Failure, User>> retrieve(bool localUser);
 
   // /// Authenticates from other platforms
-  // Future<Either<Failure, User>> socialLogin(
-  //     {required String provider, required User user, required String fcmToken});
+  Future<Either<Failure, UserEntity>> googleSignIn();
 
   /// Sign up a user account
   Future<Either<Failure, UserEntity>> signUp(

@@ -54,6 +54,7 @@ dependencies:
   google_fonts: ^4.0.4
   firebase_database: ^10.1.1
   scroll_date_picker: ^3.7.0
+  google_sign_in: ^6.1.0
 
 dev_dependencies:
   flutter_test:

@@ -4,6 +4,7 @@ import 'package:scroll_date_picker/scroll_date_picker.dart';
 
 import '../../../../core/presentation/widgets/theme/theme.dart';
 import '../../../../core/util/validator.dart';
+import 'verify_email.dart';
 
 class ConfirmSignUpPage extends StatefulWidget {
   const ConfirmSignUpPage({super.key});
@@ -22,7 +23,7 @@ class _ConfirmSignUpPageState extends State<ConfirmSignUpPage> {
     late String dob;
 
     return Scaffold(
-        resizeToAvoidBottomInset: true,
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
             title: Container(
                 height: 30,
@@ -159,7 +160,12 @@ class _ConfirmSignUpPageState extends State<ConfirmSignUpPage> {
                           padding: const EdgeInsets.symmetric(vertical: 18),
                           backgroundColor: TwitterColor.dodgeBlue),
                       child: const Text('Sign Up'),
-                      onPressed: () {}))
+                      onPressed: () {
+                        Navigator.push<void>(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const VerifyEmail()));
+                      }))
             ])));
   }
 }

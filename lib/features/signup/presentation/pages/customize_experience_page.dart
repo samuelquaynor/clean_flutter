@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/presentation/widgets/theme/theme.dart';
+import '../../../welcome/presentation/widgets/get_started_wrapper.dart';
 import 'confirm_signup.dart';
 
 class CustomizeExperience extends StatelessWidget {
@@ -8,27 +9,7 @@ class CustomizeExperience extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        resizeToAvoidBottomInset: true,
-        appBar: AppBar(
-            title: Container(
-                height: 30,
-                margin: const EdgeInsets.symmetric(vertical: 10),
-                child: Image.asset('assets/images/icon-480.png'))),
-        bottomNavigationBar: Padding(
-            padding: const EdgeInsets.all(8),
-            child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.push<void>(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ConfirmSignUpPage()));
-                  },
-                  style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 5)),
-                  child: const Text('Next'))
-            ])),
+    return GetStartedWrapper(
         body: Padding(
             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 26),
             child:
@@ -85,6 +66,12 @@ class CustomizeExperience extends StatelessWidget {
                         fontSize: 14,
                         fontWeight: FontWeight.w500)),
               ])),
-            ])));
+            ])),
+        navigate: () {
+          Navigator.push<void>(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const ConfirmSignUpPage()));
+        });
   }
 }

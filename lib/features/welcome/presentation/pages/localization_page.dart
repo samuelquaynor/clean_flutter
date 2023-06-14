@@ -2,43 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../signup/presentation/pages/sign_up.dart';
+import '../widgets/get_started_wrapper.dart';
 
 class LocalizationPage extends StatelessWidget {
   const LocalizationPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        resizeToAvoidBottomInset: true,
-        appBar: AppBar(
-            title: Container(
-                height: 30,
-                margin: const EdgeInsets.symmetric(vertical: 10),
-                child: Image.asset('assets/images/icon-480.png'))),
-        bottomNavigationBar: Padding(
-            padding: const EdgeInsets.all(8),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  OutlinedButton(
-                      onPressed: () {},
-                      style: OutlinedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 10)),
-                      child: Text('Skip for now',
-                          style: Theme.of(context).textTheme.labelLarge)),
-                  ElevatedButton(
-                      onPressed: () {
-                        Navigator.push<void>(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const SignUpPage()));
-                      },
-                      style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 5)),
-                      child: const Text('Next'))
-                ])),
+    return GetStartedWrapper(
+        navigate: () {
+          Navigator.push<void>(context,
+              MaterialPageRoute(builder: (context) => const SignUpPage()));
+        },
+        skip: true,
         body: Padding(
             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 26),
             child:
@@ -65,10 +41,9 @@ class LocalizationPage extends StatelessWidget {
                   shrinkWrap: true,
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   itemBuilder: (context, index) => ListTile(
-                        title: Text('English - English',
-                            style: Theme.of(context).textTheme.labelLarge),
-                        trailing: Checkbox(value: false, onChanged: (value) {}),
-                      )),
+                      title: Text('English - English',
+                          style: Theme.of(context).textTheme.labelLarge),
+                      trailing: Checkbox(value: false, onChanged: (value) {}))),
               Padding(
                   padding: const EdgeInsets.symmetric(vertical: 18),
                   child: Text('Show more',

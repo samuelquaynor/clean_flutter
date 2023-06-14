@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import '../../../../core/presentation/widgets/theme/theme.dart';
+import '../../../signin/presentation/pages/signin_page.dart';
 import '../../../signup/presentation/pages/sign_up.dart';
 import 'localization_page.dart';
 
@@ -23,7 +24,7 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-            resizeToAvoidBottomInset: true,
+            resizeToAvoidBottomInset: false,
             body: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
@@ -92,7 +93,8 @@ class _WelcomePageState extends State<WelcomePage> {
                                 Navigator.push<void>(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const LocalizationPage()));
+                                        builder: (context) =>
+                                            const LocalizationPage()));
                               })),
                       Text.rich(TextSpan(children: [
                         TextSpan(
@@ -122,15 +124,13 @@ class _WelcomePageState extends State<WelcomePage> {
                                 const Text('Have an account already?'),
                                 InkWell(
                                     onTap: () {
-                                      // final state =
-                                      //     Provider.of<AuthState>(context, listen: false);
-                                      // Navigator.push(
-                                      //   context,
-                                      //   MaterialPageRoute(
-                                      //     builder: (context) =>
-                                      //         SignIn(loginCallback: state.getCurrentUser),
-                                      //   ),
-                                      // );
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute<void>(
+                                          builder: (context) =>
+                                              const SignInPage(),
+                                        ),
+                                      );
                                     },
                                     child: Padding(
                                         padding: const EdgeInsets.symmetric(

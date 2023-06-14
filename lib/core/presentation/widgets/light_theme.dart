@@ -29,7 +29,7 @@ ThemeData lightTheme = ThemeData(
               fontSize: 32, fontWeight: FontWeight.w800, color: Colors.black)),
       headlineMedium: GoogleFonts.mulish(
           textStyle: const TextStyle(
-              fontSize: 26, fontWeight: FontWeight.w800, color: Colors.black)),
+              fontSize: 26, fontWeight: FontWeight.w700, color: Colors.black)),
       headlineSmall: GoogleFonts.mulish(
           textStyle: const TextStyle(
               fontSize: 22, fontWeight: FontWeight.w800, color: Colors.black)),
@@ -79,8 +79,9 @@ ThemeData lightTheme = ThemeData(
                 borderRadius: BorderRadius.circular(30)))),
     textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30)))),
+            textStyle:
+                GoogleFonts.mulish(textStyle: const TextStyle(fontSize: 16)),
+            padding: EdgeInsets.zero)),
     chipTheme: ChipThemeData.fromDefaults(
         secondaryColor: TwitterColor.cerulean,
         labelStyle: const TextStyle(),

@@ -25,5 +25,5 @@ void initUser() {
     ..registerLazySingleton<UserLocalDatabase>(
         () => UserLocalDatabaseImpl(sl()))
     ..registerLazySingleton<UserRemoteDatabase>(
-        () => UserRemoteDatabaseImpl(auth: sl(), database: sl()));
+        () => UserRemoteDatabaseImpl(auth: sl(), database: sl(), googleSignIn: sl()));
 }
